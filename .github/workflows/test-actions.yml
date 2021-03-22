@@ -8,3 +8,12 @@ jobs:
       - uses: actions/setup-node@v1
       - run: npm install -g bats
       - run: bats -v
+  run-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build the Docker image
+        run: docker-compose up -d
+      - name: Test Code
+        run: docker exec -w /var/www/html/src server-container vendor/bin/phpunit # workdirの設定はなくてもsrcにいるはずだが一応書いておく
+    

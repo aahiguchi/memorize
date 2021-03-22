@@ -1,6 +1,6 @@
-src/vendor/
 src/logs/*
 !src/logs/README.md
 .vscode/*
 .DS_Store
 .idea/*
+src/.phpunit.result.cache

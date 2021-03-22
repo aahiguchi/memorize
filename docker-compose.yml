@@ -5,13 +5,14 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
   server:
+    container_name: server-container
     build:
       context: ./
       dockerfile: ./docker/server/Dockerfile
     volumes:
       - ../memorize:/var/www/html
     ports:
-      - "8080:80"
+      - '8080:80'
     depends_on:
-      - "db"
+      - 'db'
     tty: true

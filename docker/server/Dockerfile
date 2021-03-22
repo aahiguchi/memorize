@@ -1,12 +1,11 @@
 FROM php:7.2-apache
 
-RUN curl -s https://raw.githubusercontent.com/composer/getcomposer.org/b3c61710072162971a18241e2dd2dd1e1f0e8a3c/web/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
+COPY --from=composer /usr/bin/composer /usr/bin/composer
 
-# slimの空プロジェクトをcomposer経由で作成する際に必要
+# composerがzip形式でパッケージをダウンロードしたりするので必要
 RUN apt-get update && apt-get install -y \
         zip \
         unzip 
-
 
 WORKDIR /var/www/html
 

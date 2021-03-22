@@ -37,4 +37,9 @@ class HomepageTest extends BaseTestCase
         $this->assertEquals(405, $response->getStatusCode());
         $this->assertStringContainsString('Method not allowed', (string)$response->getBody());
     }
+
+    public function testFail()
+    {
+        $this->assertEquals(1, 2);
+    }
 }
